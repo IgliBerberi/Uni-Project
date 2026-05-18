@@ -1,0 +1,71 @@
+.account-page {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.account-page h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2rem;
+}
+
+.account-lead {
+  margin: 0 0 2rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.profile-details {
+  margin: 0;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+}
+
+.profile-details > div {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.profile-details > div:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.profile-details > div:first-child {
+  padding-top: 0;
+}
+
+.profile-details dt {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.profile-details dd {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.settings-list {
+  margin: 0;
+  padding: 1.25rem 1.5rem;
+  list-style: none;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+}
+
+.settings-list li {
+  padding: 0.65rem 0;
+  color: var(--muted);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.settings-list li:last-child {
+  border-bottom: none;
+}

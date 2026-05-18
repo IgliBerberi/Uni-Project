@@ -1,0 +1,2 @@
+# Optional: enable rewrite if you add front-controller routes later
+RewriteEngine On

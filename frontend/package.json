@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "backend": "/Applications/XAMPP/xamppfiles/bin/php -S localhost:8080 -t ../backend",
+    "backend": "php -S localhost:8080 -t ../backend",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

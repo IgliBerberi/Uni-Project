@@ -7,21 +7,20 @@ Offline e-commerce with XAMPP (MySQL + phpMyAdmin) and a local PHP API.
 | Service | URL |
 |---------|-----|
 | React app | **http://localhost:3000** |
-| PHP API | **http://localhost:8080** (proxied as `/api` on port 3000) |
+| PHP API | **http://localhost/e-commerce/api/** (XAMPP Apache; proxied as `/api` on port 3000) |
 | phpMyAdmin | http://localhost/phpmyadmin |
 
-## Quick start (two terminals)
+## Quick start
 
-### Terminal 1 — PHP backend
+### 1 — Backend in XAMPP htdocs
 
-```bash
-cd frontend
-npm run backend
-```
+1. Start **Apache** and **MySQL** in XAMPP.
+2. Copy the entire `backend/` folder to **`C:\xampp\htdocs\e-commerce\`** (folder name must match `VITE_PROXY_TARGET` in `frontend/.env`).
+3. Import `backend/sql/schema.sql` in phpMyAdmin; edit `htdocs/e-commerce/config/db_connect.php` if needed.
 
-This serves `backend/` at `http://localhost:8080`. MySQL still comes from XAMPP — keep **MySQL** running in XAMPP.
+Test: open `http://localhost/e-commerce/api/auth/business.php?action=me` — you should get JSON, not a 404 page.
 
-### Terminal 2 — React frontend
+### 2 — React frontend
 
 ```bash
 cd frontend
@@ -41,21 +40,23 @@ Open **http://localhost:3000**
 
 ```
 Browser (localhost:3000)
-    → Vite proxy /api/*
-    → PHP server (localhost:8080/api/*.php)
+    → Vite proxy /api/* and /uploads/*
+    → XAMPP Apache (localhost/e-commerce/api/*.php)
     → MySQL (XAMPP, ecommerce_db)
 ```
+
+**Without Apache** — from `frontend/`, run `npm run backend` (PHP on port 8080) and set `VITE_PROXY_TARGET=http://localhost:8080` in `.env`.
 
 Sessions use the `PHPSESSID` cookie. All API calls use `credentials: 'include'`.
 
 ## Troubleshooting
 
-**404 on `/api/...`** — Start the backend: `npm run backend` in the `frontend` folder.
+**404 on `/api/...`** — Apache running? Is `backend/` copied to `htdocs/e-commerce/`? Does `.env` `VITE_PROXY_TARGET` match that folder name?
 
 **Database connection failed** — Check XAMPP MySQL is running and `db_connect.php` credentials match phpMyAdmin.
 
 **Test API directly** — With backend running, open:
-`http://localhost:8080/api/auth/business.php?action=me` (should return JSON, not HTML 404).
+`http://localhost/e-commerce/api/auth/business.php?action=me` (should return JSON, not HTML 404).
 
 ## Routes
 
